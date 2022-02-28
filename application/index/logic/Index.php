@@ -13,6 +13,8 @@ class Index
 {
 
 
+
+    //ES查询
     public function getWhere($params){
         $where = array();
         $where['is_delete'] = 0;
@@ -24,12 +26,10 @@ class Index
         if(!empty($params['create_time'])){            $where['create_time'] = $params['create_time'];  }
         if(!empty($params['photo'])){            $where['photo'] = $params['photo'];  }
 
-
         //must：搜索的结果必须匹配，类似SQL的AND,must_not: 搜索的结果必须不匹配，类似SQL的NOT
         //filter：精确过滤
         //should: 搜索的结果至少匹配到一个，类似SQL的OR
         $condition = ['must' => [],'filter'=> []];
-
 
         //在搜索多个字段的时候，可以使用multi_match
         //minimum_should_match表示必须匹配的最小子句（为数字表示最小子句数，为百分比表示向下取整的字段最小子句数）
@@ -48,10 +48,8 @@ class Index
 //        //filter_精确过滤，ierm_单个精确值
 //        array_push($condition['filter'],['term' => ['idcard'=> 371321198805205636]]);
 
-
         //range_范围查询
         array_push($condition['filter'],['range' => ['mobile' => ['gt'=> 0 ,'lt' => 18830243540]]]);
-
         return $condition;
     }
 

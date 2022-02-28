@@ -17,6 +17,7 @@ class Index
 {
 
 
+    //测试连接数据库
     public function getUserInfo()
     {
 
@@ -37,6 +38,7 @@ class Index
 //        echo 1111;
     }
 
+    //查询ES
     public function SearchUser(){
         $params = Request::only(['page'=>1,'rows'=>15,'id','idcard','mobile','realname','birthday','create_time','photo'], 'get');
         $condition = (new IndexLogic())->getWhere($params);
@@ -57,11 +59,28 @@ class Index
 //        print_r($get);
     }
 
+    //查询ES
+    public function SearchOrganization(){
+        $params = Request::only(['page'=>1,'rows'=>15,'id','idcard','mobile','realname','birthday','create_time','photo'], 'get');
+        $condition = (new IndexLogic())->getWhere($params);
 
 
+        $ES = new ElasticSearchApi('organization','organization');
+        $sum = $ES->getCount($condition);
+        $total = $sum>1000?1000:$sum;
+        $totalPage = ceil($total / $params['rows']);
+        $field = ['id','idcard','mobile','realname','birthday','create_time','photo'];
+        $offset = ($params['page'] - 1) * $params['rows'] <= 0 ? 0 : ($params['page'] - 1) * $params['rows'];
+        $data = $ES->boolQuery($condition, $field, $offset, $params['rows'],'id','desc');
 
+        print_r($sum);
+        print_r($data);
 
+//        $get = $ES->get_one_document(5451748,null,null);//根据id获得单条数据
+//        print_r($get);
+    }
 
+    //写入ES
     public function getOrganization()
     {
 
@@ -87,35 +106,6 @@ class Index
 
         echo 55555;
     }
-
-
-
-    public function SearchOrganization(){
-        $params = Request::only(['page'=>1,'rows'=>15,'id','idcard','mobile','realname','birthday','create_time','photo'], 'get');
-        $condition = (new IndexLogic())->getWhere($params);
-
-
-        $ES = new ElasticSearchApi('organization','organization');
-        $sum = $ES->getCount($condition);
-        $total = $sum>1000?1000:$sum;
-        $totalPage = ceil($total / $params['rows']);
-        $field = ['id','idcard','mobile','realname','birthday','create_time','photo'];
-        $offset = ($params['page'] - 1) * $params['rows'] <= 0 ? 0 : ($params['page'] - 1) * $params['rows'];
-        $data = $ES->boolQuery($condition, $field, $offset, $params['rows'],'id','desc');
-
-        print_r($sum);
-        print_r($data);
-
-//        $get = $ES->get_one_document(5451748,null,null);//根据id获得单条数据
-//        print_r($get);
-    }
-
-
-
-
-
-
-
 
     //导出excel
     public function exportExcel(){

@@ -15,24 +15,29 @@
 Route::get('compoundInterest', 'investment/Base/compoundInterest');//复利计算
 
 
+
+
+
+
 Route::pattern('id','\d+');
 
-Route::get('getUserInfo','index/index/getUserInfo');
-Route::get('SearchUser','index/index/SearchUser');
 
-Route::get('getOrganization','index/index/getOrganization');
-Route::get('SearchOrganization','index/index/SearchOrganization');
+//数据库
+Route::get('getUserInfo','index/index/getUserInfo');//测试连接数据库
+Route::get('SearchUser','index/index/SearchUser');//查询ES
+Route::get('SearchOrganization','index/index/SearchOrganization');//查询ES
+Route::get('getOrganization','index/index/getOrganization');//写入ES
 
 
 
-
+//文件操作
 Route::get('exportExcel','index/index/exportExcel');//导出excel
 Route::get('importExcel','index/index/importExcel');//导入excel
-
 Route::get('uploadPictureMin','index/index/uploadPictureMin');//上传图片并压缩
-
 Route::get('exportZip','index/index/exportZip');//生成压缩文件
 
 
+
+//kafka
 Route::get('KafKaProducer','Kafka/Kafka/KafKaProducer');//kafka生产者推送数据
 Route::get('KafKaConsumer','Kafka/Kafka/KafKaConsumer');//kafka消费者者读取数据
