@@ -4,6 +4,7 @@ namespace app\index\controller;
 use app\index\logic\Es;
 use app\index\logic\Index as IndexLogic;
 
+use app\index\model\Users as UsersModel;
 use org\ElasticSearchApi;
 use think\Db;
 use think\db\Query;
@@ -24,18 +25,32 @@ class Index
 
 
         $id = 5451748;
+        $UsersModel = new UsersModel();
+        $params = Request::only(['page'=>1,'rows'=>15,'id'=>null,'idcard'=>null,'realname'=>null], 'get');
+
+        $field = 'Users.id,Users.idcard,Users.mobile,Users.realname,Users.birthday,Users.create_time,Users.photo';
+
+
+
+        $data = $UsersModel->getUserIndex($params,$field,false);
+
+//        $data = $UsersModel->getUserIndex($params,$field,false)->each(function($item){
+//            foreach ($item->JoinChildrenWeb as $value)
+//            {
+////                $value->CategoryInfo;
+////                unset($value->CategoryInfo);
+//            }
+//        });
+
+
+        print_r($data);exit();
+
+
 
         //查询用户基本信息
-        $user = Db::name('users')->where('id',$id)->find();
-        print_r($user);exit();
+//        $user = Db::name('users')->where('id',$id)->find();
+//        print_r($user);exit();
 
-        //写入Es
-//        $esOpen = Config::get('system.ES_OPEN');
-//        if($esOpen == 1 ){
-//            (new Es())->update($id);
-//        }
-
-//        echo 1111;
     }
 
     //查询ES
