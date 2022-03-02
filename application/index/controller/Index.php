@@ -29,6 +29,7 @@ class Index
         $params = Request::only(['page'=>1,'rows'=>15,'id'=>null,'idcard'=>null,'realname'=>null], 'get');
 
         $field = 'Users.id,Users.idcard,Users.mobile,Users.realname,Users.birthday,Users.create_time,Users.photo';
+        $field = 'id,idcard,mobile,realname,birthday,create_time,photo';
 
 
 
