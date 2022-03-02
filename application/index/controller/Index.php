@@ -18,41 +18,23 @@ class Index
 {
 
 
-    //测试连接数据库
-    public function getUserInfo()
-    {
-
-
-
-        $id = 5451748;
+    //关联查询（->with）
+    public function getUserInfo(){
         $UsersModel = new UsersModel();
         $params = Request::only(['page'=>1,'rows'=>15,'id'=>null,'idcard'=>null,'realname'=>null], 'get');
-
-        $field = 'Users.id,Users.idcard,Users.mobile,Users.realname,Users.birthday,Users.create_time,Users.photo';
         $field = 'id,idcard,mobile,realname,birthday,create_time,photo';
-
-
-
         $data = $UsersModel->getUserIndex($params,$field,false);
-
-//        $data = $UsersModel->getUserIndex($params,$field,false)->each(function($item){
-//            foreach ($item->JoinChildrenWeb as $value)
-//            {
-////                $value->CategoryInfo;
-////                unset($value->CategoryInfo);
-//            }
-//        });
-
-
-        print_r($data);exit();
-
-
-
-        //查询用户基本信息
-//        $user = Db::name('users')->where('id',$id)->find();
-//        print_r($user);exit();
-
+        return json($data);
     }
+
+    //关联查询（->belongsTo）
+    public function getChildrenWeb(){
+        $id = 22851;
+        $UsersModel = new UsersModel();
+        $data = $UsersModel->getChildrenWeb($id);
+        return json($data);
+    }
+
 
     //查询ES
     public function SearchUser(){
