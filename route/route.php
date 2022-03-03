@@ -25,6 +25,7 @@ Route::pattern('id','\d+');
 //数据库
 Route::get('getUserInfo','index/index/getUserInfo');//关联查询（->with）
 Route::get('getChildrenWeb','index/index/getChildrenWeb');//关联查询（->belongsTo）
+Route::get('getChildrenWebHasWhere','index/index/getChildrenWebHasWhere');//关联查询（->hasWhere）
 
 Route::get('SearchUser','index/index/SearchUser');//查询ES
 Route::get('SearchOrganization','index/index/SearchOrganization');//查询ES

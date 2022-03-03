@@ -35,6 +35,13 @@ class Index
         return json($data);
     }
 
+    //关联查询（->hasWhere）
+    public function getChildrenWebHasWhere(){
+        $id = 5451748;
+        $UsersModel = new UsersModel();
+        $data = $UsersModel->getChildrenWebHasWhere($id);
+        return json($data);
+    }
 
     //查询ES
     public function SearchUser(){
