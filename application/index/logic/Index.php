@@ -57,6 +57,19 @@ class Index
 
 
 
+    //错误捕获与处理
+    public function errorTest(){
+        //指定异常处理的位置，在config/app.php 的参数 exception_handle（此处指定到app/ExceptionHandle）
+
+        //如下随便写几句，让这一段报错，走到app/ExceptionHandle 的 render方法去
+        $data = Db::name('dfsdfsdfsdsdfsd')->field('id,name')->where('id','<',6666)->select();
+        $data = new UsersModel();
+        return $data;
+    }
+
+
+
+
 
 
 }

@@ -13,10 +13,23 @@ use org\Excel;
 use org\PicCompress;
 use think\facade\Request;
 use think\Queue;
+use app\index\validate\Index as IndexValidate;
 
 class Index
 {
 
+    //错误捕获与处理
+    public function errorTest(){
+        $IndexLogic = new IndexLogic();
+        $params = Request::only(['id'=>null], 'get');
+
+        validate(IndexValidate::class)//此处验证走到按照在config/app.php 的参数 exception_handle，走到app/ExceptionHandle的render方法
+            ->scene('check')
+            ->check($params);
+
+        $data = $IndexLogic->errorTest();
+        return json($data);
+    }
 
     //关联查询（->with）
     public function getUserInfo(){
