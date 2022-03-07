@@ -12,9 +12,6 @@
 //Route::miss(function(){
 //    return json('404,不存在此路径！！！！！')->code(404);
 //});
-Route::get('compoundInterest', 'investment/Base/compoundInterest');//复利计算
-
-
 
 
 
