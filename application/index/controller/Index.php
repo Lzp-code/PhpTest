@@ -134,7 +134,6 @@ class Index
         Excel::exportExcel($fileName,$head,$data);
     }
 
-
     //导入excel
     public function importExcel(){
         $fileName = 'young-instructor.xls';//先通过上传文件的接口上传文件，然后获取到文件名称
@@ -142,7 +141,6 @@ class Index
         $data = Excel::import($filePath,502, "N");//获得Excel文件的内容后，自行按需求逻辑处理
         print_r($data);
     }
-
 
     //上传图片并压缩
     public function uploadPictureMin(){
@@ -163,7 +161,6 @@ class Index
         }
         $PicCompress = (new PicCompress($origin_save_name,0))->compressImg($mini_save_name);//将原图压缩保存到$mini_save_name
     }
-
 
     //生成压缩文件
     public function exportZip()
@@ -216,5 +213,22 @@ class Index
             }
         }
     }
+
+    //推送队列
+    public function pushQueue()
+    {
+        $UsersModel = new UsersModel();
+        $params = Request::only(['page'=>1,'rows'=>15,'id'=>null,'idcard'=>null,'realname'=>null], 'post');
+        $field = 'id,idcard,mobile,realname,birthday,create_time,photo';
+        $data = $UsersModel->getUserIndex($params,$field,false);
+        return json($data);
+    }
+
+
+
+
+
+
+
 
 }
