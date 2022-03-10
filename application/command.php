@@ -9,4 +9,9 @@
 // | Author: yunwuxin <448901948@qq.com>
 // +----------------------------------------------------------------------
 
-return [];
+return [
+    //执行命令行
+    'app\index\command\ComprehensiveStatistics',
+
+
+];
