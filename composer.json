@@ -23,6 +23,7 @@
         "elasticsearch/elasticsearch": "~5.0",
         "topthink/think-queue": "^2.0.4",
         "psr/log": "~1.0",
+        "phpmailer/phpmailer": "^6.0",
         "adaddad/kafka-php": "dev-master"
 
     },

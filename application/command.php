@@ -11,7 +11,7 @@
 
 return [
     //执行命令行
-    'app\index\command\ComprehensiveStatistics',
+    'app\index\command\TestCommand',
 
 
 ];
