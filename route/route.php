@@ -37,5 +37,7 @@ Route::get('exportZip','index/index/exportZip');//生成压缩文件
 Route::get('KafKaProducer','Kafka/Kafka/KafKaProducer');//kafka生产者推送数据
 Route::get('KafKaConsumer','Kafka/Kafka/KafKaConsumer');//kafka消费者者读取数据
 
+
+
 //推送队列
 Route::post('pushQueue','index/index/pushQueue');//推送队列（未做完）
