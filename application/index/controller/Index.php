@@ -217,11 +217,19 @@ class Index
     //推送队列
     public function pushQueue()
     {
-        $UsersModel = new UsersModel();
-        $params = Request::only(['page'=>1,'rows'=>15,'id'=>null,'idcard'=>null,'realname'=>null], 'post');
-        $field = 'id,idcard,mobile,realname,birthday,create_time,photo';
-        $data = $UsersModel->getUserIndex($params,$field,false);
-        return json($data);
+        $data = array();
+        $data['question'] = random_int(1,999);
+        $data['update_time'] = date('Y-m-d H:i:s', time());
+        $data['create_time'] = date('Y-m-d H:i:s', time());
+
+        $job = 'app\index\job\LzpTestQueue';
+        Queue::push($job, $data,'LzpTestQueue');
+        return json(['code'=>0,'data'=>$data,'msg'=>'push成功！']);
+
+        //根目录执行
+        //php think queue:work --queue LzpTestQueue
+        //php think queue:work --daemon --queue LzpTestQueue
+        //php think queue:listen --queue LzpTestQueue
     }
 
 
