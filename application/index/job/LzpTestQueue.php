@@ -7,12 +7,12 @@ use think\queue\Job;
 
 class LzpTestQueue
 {
-//关于queue的更多信息：https://blog.csdn.net/will5451/article/details/80434174
-
-
+//        关于queue的更多信息：https://blog.csdn.net/will5451/article/details/80434174
 //        在Linux查看任务数量，可以在终端输入：jobs -l
-//        重启所有的消息队列：:php think queue:restart
 
+//执行单个队列
+/**
+//        重启所有的消息队列：:php think queue:restart
 //    在config文件夹下会有一个queue.php的配置文件，需要改redis的配置，然后再写代码
 
     //根目录执行
@@ -37,10 +37,9 @@ class LzpTestQueue
     //--sleep  3         //如果队列中无任务，则多长时间后重新检查，daemon模式下有效
     //--tries  0         //如果任务已经超过重发次数上限，则进入失败处理逻辑，默认为0
     //--timeout 6        //创建的work子进程的允许执行的最长时间，以秒为单位
-
+ **/
 
     protected $data = [];
-
     public function fire(Job $job, $data)
     {
         //....这里执行具体的任务
