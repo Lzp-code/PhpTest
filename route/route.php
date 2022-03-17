@@ -40,4 +40,4 @@ Route::get('KafKaConsumer','Kafka/Kafka/KafKaConsumer');//kafka消费者者读�
 
 
 //推送队列
-Route::post('pushQueue','index/index/pushQueue');//推送队列（未做完）
+Route::post('pushQueue','index/index/pushQueue');//推送队列并执行
