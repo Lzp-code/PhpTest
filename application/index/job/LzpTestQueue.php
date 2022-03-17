@@ -60,11 +60,11 @@ class LzpTestQueue
     #killasgroup=true
 
     supervisorctl status：查看所有进程的状态
+    supervisorctl update ：配置文件修改后可以使用该命令加载新的配置
     supervisorctl stop es：停止es
     supervisorctl start all：启动所有
     supervisorctl start es：启动es
     supervisorctl restart es: 重启es
-    supervisorctl update ：配置文件修改后可以使用该命令加载新的配置
     supervisorctl reload: 重新启动配置中的所有程序
      *
      * 其他命令行可参考：
@@ -74,7 +74,7 @@ class LzpTestQueue
      */
 
 
-    
+
     protected $data = [];
     public function fire(Job $job, $data)
     {
