@@ -11,13 +11,13 @@
 
 return [
     //'connector' => 'Sync'
-    'connector' => 'redis',
+    'connector' => 'redis',//redis驱动
 
-    'expire'     => 60,
-    'default'    => 'default',
+    'expire'     => 60,// 任务的过期时间，默认为60秒; 若要禁用，则设置为 null
+    'default'    => 'default',//默认队列名称
     'host'       => '119.23.49.233',
     'port'       => 6380,
     'password'   => 'zun1redis',
-    'select'     => 1,
-    'timeout'    => 0,
+    'select'     => 1,// 使用哪一个 db，默认为 db0
+    'timeout'    => 0,// redis连接的超时时间
 ];
