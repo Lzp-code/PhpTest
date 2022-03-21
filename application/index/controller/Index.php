@@ -22,11 +22,9 @@ class Index
     public function errorTest(){
         $IndexLogic = new IndexLogic();
         $params = Request::only(['id'=>null], 'get');
-
         validate(IndexValidate::class)//此处验证走到按照在config/app.php 的参数 exception_handle，走到app/ExceptionHandle的render方法
             ->scene('check')
             ->check($params);
-
         $data = $IndexLogic->errorTest();
         return json($data);
     }

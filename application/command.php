@@ -13,5 +13,6 @@ return [
     //执行命令行
     'app\index\command\TestCommand',
 
-
+    //计划任务
+    'app\index\command\LzpTest',
 ];
