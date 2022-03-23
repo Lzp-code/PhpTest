@@ -34,6 +34,8 @@ class LzpTest extends Command
      * 比如示例——每小时的第15分钟执行一次：15 * * * * php /data/www/hebei/think LzpTest（按照执行命令行的模式：php think LzpTest，只是这里要指向任务所在的文件夹，所以写成了php /data/www/hebei/think LzpTest）
      * crontab 中的 command 尽量使用绝对路径，否则会经常因为路径错误导致任务无法执行。
      * 然后重启：/bin/systemctl restart crond.service
+     *
+     * 同一个任务，如果下一个任务开始时上一个任务未结束，则会同时存在多个计划任务
      * 如果执行过程中要停止，需要杀进程：
      * ps -ef | grep LzpTest    然后  kill 进程号
      *
