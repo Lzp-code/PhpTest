@@ -20,6 +20,10 @@ class Index
 
     //错误捕获与处理
     public function errorTest(){
+
+        print_r(bcrypt(1515));
+        exit();
+
         $IndexLogic = new IndexLogic();
         $params = Request::only(['id'=>null], 'get');
         validate(IndexValidate::class)//此处验证走到按照在config/app.php 的参数 exception_handle，走到app/ExceptionHandle的render方法
@@ -225,12 +229,5 @@ class Index
 //        Queue::later(5,$job, $data,'LzpTestQueue');//延迟5秒推送
         return json(['code'=>0,'data'=>$data,'msg'=>'push成功！']);
     }
-
-
-
-
-
-
-
 
 }

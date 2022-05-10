@@ -55,8 +55,6 @@ class Index
 
 
 
-
-
     //错误捕获与处理
     public function errorTest(){
         //指定异常处理的位置，在config/app.php 的参数 exception_handle（此处指定到app/ExceptionHandle）
@@ -66,10 +64,5 @@ class Index
         $data = new UsersModel();
         return $data;
     }
-
-
-
-
-
 
 }
