@@ -42,7 +42,7 @@ class LuckdrwaLogic{
 
             //至此可得最终抽奖数组如下：（奖品id => 中奖概率）
             $newGoodsArr = [
-                0 => 9800,      //未中奖概率 = 活动的中奖基数（$activity['base_num']） - 所有实际奖品的中奖率之和。
+                0 => 9800,      //未中奖概率 = 活动的中奖基数（$activity['base_num']） - 所有实际奖品的中奖率之和（$goodArrNum）。
                 1 => 10,
                 2 => 20,
                 3 => 70,
